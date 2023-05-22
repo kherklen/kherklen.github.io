@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab-10</title>
+	<style>
+.hangman-box {
+  width: 200px;
+  height: 250px;
+  position: relative;
+  margin: 20px auto;
+}
+	  .stick {
+		  height: 150px;
+		  width: 5px;
+		  background-color: black;
+		  margin-left: 20px;
+		  margin-top: 20px;
+	  }
+	  .rope {
+		  height: 100px;
+		  width: 5px;
+		  background-color: black;
+		  transform: rotate(90deg);
+		  margin: -200px auto auto 70px;
+	  }
+		.rope-2 {
+			height: 50px;
+			width: 5px;
+			background-color: black;
+			margin: -50px 30px -50px 120px;
+		}
+
+.head {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50px;
+	  background-color: black; 
+		
+    }
+
+    .torso {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      width: 2px;
+      height: 74px;
+      background-color: black;
+	  margin-left: 25px;
+    }
+
+    .left-arm {
+      position: absolute;
+      top: 75px;
+      left: 50%;
+      width: 30px;
+      height: 2px;
+      background-color: black;
+	  transform: rotate(45deg);
+    }
+
+    .right-arm {
+      position: absolute;
+      top: 75px;
+      left: 50%;
+      width: 30px;
+      height: 2px;
+      background-color: black;
+	  transform: rotate(-45deg);
+	  margin-left: 20px;
+    }
+
+    .left-leg {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      width: 30px;
+      height: 2px;
+      background-color: black;
+	  transform: rotate(135deg);
+    }
+
+    .right-leg {
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      width: 30px;
+      height: 2px;
+      background-color: black;
+	  transform: rotate(-135deg);
+	  margin-left: 20px;
+    }
+
+.question-box {
+  width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  font-size: 20px;
+}
+	</style>
+</head>
+
+<body>
+    <h1>Hangman Game</h1>
+    <div class="hangman-box">
+      <div class="stick"></div>
+      <div class="rope"></div>
+	  <div class="rope-2"></div>
+      <div class="head"></div>
+      <div class="torso"></div>
+      <div class="left-arm"></div>
+      <div class="right-arm"></div>
+      <div class="left-leg"></div>
+      <div class="right-leg"></div>
+    </div>
+    <div class="question-box">
+      <h2 id="question"></h2>
+      <p id="answer"></p>
+    </div>
+    <div class="keyboard">
+      <button class="key" onclick="handleKey('а')">А</button>
+      <button class="key" onclick="handleKey('б')">Б</button>
+      <button class="key" onclick="handleKey('в')">В</button>
+      <button class="key" onclick="handleKey('г')">Г</button>
+      <button class="key" onclick="handleKey('д')">Д</button>
+      <button class="key" onclick="handleKey('е')">Е</button>
+      <button class="key" onclick="handleKey('ё')">Ё</button>
+      <button class="key" onclick="handleKey('ж')">Ж</button>
+      <button class="key" onclick="handleKey('з')">З</button>
+      <button class="key" onclick="handleKey('и')">И</button>
+      <button class="key" onclick="handleKey('й')">Й</button>
+      <button class="key" onclick="handleKey('к')">К</button>
+      <button class="key" onclick="handleKey('л')">Л</button>
+      <button class="key" onclick="handleKey('м')">М</button>
+      <button class="key" onclick="handleKey('н')">Н</button>
+      <button class="key" onclick="handleKey('о')">О</button>
+      <button class="key" onclick="handleKey('ө')">Ө</button>
+      <button class="key" onclick="handleKey('п')">П</button>
+      <button class="key" onclick="handleKey('р')">Р</button>
+      <button class="key" onclick="handleKey('с')">С</button>
+      <button class="key" onclick="handleKey('т')">Т</button>
+      <button class="key" onclick="handleKey('у')">У</button>
+      <button class="key" onclick="handleKey('ү')">Ү</button>
+      <button class="key" onclick="handleKey('ф')">Ф</button>
+      <button class="key" onclick="handleKey('х')">Х</button>
+      <button class="key" onclick="handleKey('ц')">Ц</button>
+      <button class="key" onclick="handleKey('ч')">Ч</button>
+      <button class="key" onclick="handleKey('ш')">Ш</button>
+      <button class="key" onclick="handleKey('щ')">Щ</button>
+      <button class="key" onclick="handleKey('ъ')">Ъ</button>
+      <button class="key" onclick="handleKey('ы')">Ы</button>
+      <button class="key" onclick="handleKey('ь')">Ь</button>
+      <button class="key" onclick="handleKey('э')">Э</button>
+      <button class="key" onclick="handleKey('ю')">Ю</button>
+      <button class="key" onclick="handleKey('я')">Я</button>
+    </div>
+    <button id="start-button" onclick="startGame()">Дахин тоглох</button>
+  </body>
+<script>
+
+const questions = [
+  "Ямар нэгэн жимсний нэр",
+  "Хамгийн шилдэг хөлбөмгийн тоглогч",
+  "Франц улсын нийслэл",
+  "Монгол тоглоом, наадгай"
+];
+
+const answers = [
+  "алим",
+  "месси",
+  "парис",
+  "шагай"
+];
+
+let currentQuestionIndex;
+let currentAnswer;
+let guessedLetters;
+let remainingGuesses;
+
+
+function startGame() {
+  currentQuestionIndex = Math.floor(Math.random() * questions.length);
+  currentAnswer = answers[currentQuestionIndex];
+  guessedLetters = [];
+  remainingGuesses = 9;
+  updateQuestion();
+  updateHangman();
+  updateKeyboard();
+  document.getElementById("start-button").style.display = "none";
+}
+
+
+function updateQuestion() {
+  const questionElement = document.getElementById("question");
+  const answerElement = document.getElementById("answer");
+  questionElement.textContent = questions[currentQuestionIndex];
+  answerElement.textContent = getAnswerDisplay();
+}
+
+function getAnswerDisplay() {
+  let answerDisplay = "";
+  for (const letter of currentAnswer) {
+    if (guessedLetters.includes(letter)) {
+      answerDisplay += letter;
+    } else {
+      answerDisplay += "_";
+    }
+    answerDisplay += " ";
+  }
+  return answerDisplay;
+}
+
+
+function updateHangman() {
+  const hangmanParts = ["stick", "rope", "rope-2","head", "torso", "left-arm", "right-arm", "left-leg", "right-leg"];
+  for (let i = 0; i < hangmanParts.length; i++) {
+    const part = hangmanParts[i];
+    if (i < 9 - remainingGuesses) {
+      document.querySelector("." + part).style.display = "block";
+    } else {
+      document.querySelector("." + part).style.display = "none";
+    }
+  }
+}
+
+function updateKeyboard() {
+  const keyboardButtons = document.querySelectorAll(".key");
+  for (const button of keyboardButtons) {
+    const letter = button.textContent.toLowerCase();
+    if (guessedLetters.includes(letter)) {
+      button.disabled = true;
+    } else {
+      button.disabled = false;
+    }
+  }
+}
+
+function handleKey(letter) {
+  if (currentAnswer.includes(letter)) {
+    guessedLetters.push(letter);
+    const answerElement = document.getElementById("answer");
+    answerElement.textContent = getAnswerDisplay();
+    if (!getAnswerDisplay().includes("_")) {
+      endGame(true);
+    }
+  } else {
+    remainingGuesses--;
+    updateHangman();
+    if (remainingGuesses === 0) {
+      endGame(false);
+    }
+  }
+  guessedLetters.push(letter);
+  updateKeyboard();
+}
+
+function endGame(isWin) {
+  const answerElement = document.getElementById("answer");
+  const keyboardButtons = document.querySelectorAll(".key");
+  for (const button of keyboardButtons) {
+    button.disabled = true;
+  }
+  if (isWin) {
+    answerElement.textContent = "Та зөв таалаа! Баяр хүргэе!";
+  } else {
+    answerElement.textContent = "Та тааж чадсангүй! Хариулт нь " + currentAnswer;
+  }
+  document.getElementById("start-button").style.display = "block";
+}
+window.onload = function() {
+  startGame();
+};
+	</script>
+</html>

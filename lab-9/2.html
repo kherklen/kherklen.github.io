@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lab-9</title>
+<link href="2.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<form>
+  <h2>Шилжүүлэх мөнгөн тэмдэгтийг оруулна уу.</h2>
+  <input type="text" id="amount" placeholder="Шилжүүлэх тоог оруулна уу (mnt)" onfocus="showNumpad()">
+  <br>
+	<p><u>Хөрвүүлэх мөнгөн тэмдэгтийг сонгоно уу.</u></p>
+  <label><input type="radio" name="currency" id="usd" value="0"> USD</label>
+  <label><input type="radio" name="currency" id="euro" value="1"> Euro</label>
+  <label><input type="radio" name="currency" id="pound" value="2"> Pound</label>
+  <label><input type="radio" name="currency" id="won" value="3"> Won</label>
+  <label><input type="radio" name="currency" id="yen" value="4"> Yen</label>
+  <label><input type="radio" name="currency" id="yuan" value="5"> Yuan</label>
+  <br>
+<div id="numpad">
+  <div class="row">
+    <button type="button" onclick="appendToInput('1')">1</button>
+    <button type="button" onclick="appendToInput('2')">2</button>
+    <button type="button" onclick="appendToInput('3')">3</button>
+  </div>
+  <div class="row">
+    <button  type="button" onclick="appendToInput('4')">4</button>
+    <button type="button" onclick="appendToInput('5')">5</button>
+    <button type="button" onclick="appendToInput('6')">6</button>
+  </div>
+  <div class="row">
+    <button type="button" onclick="appendToInput('7')">7</button>
+    <button type="button" onclick="appendToInput('8')">8</button>
+    <button type="button" onclick="appendToInput('9')">9</button>
+  </div>
+  <div class="row">
+    <button type="button" onclick="appendToInput('.')">.</button>
+    <button type="button" onclick="appendToInput('0')">0</button>
+    <button type="button" onclick="clearInput()">Clear</button>
+  </div>
+</div>
+	<br>
+  <button type="button" onclick="convertCurrency()">Хөрвүүлэх</button>
+</form>
+<p class="result">MNT : <span id="result"></span></p>
+	<script>
+		function convertCurrency() {
+  		var amount = document.getElementById("amount").value;
+  		var currency = document.querySelector('input[name="currency"]:checked').value;
+  		var exchangeArray = [2870, 3120, 3500, 2.3, 123, 11];
+  		var convertedAmount = amount * exchangeArray[currency];
+  		document.getElementById("result").innerHTML = convertedAmount;
+		}
+		function appendToInput(value) {
+  		document.getElementById("amount").value += value;
+		}
+		function clearInput() {
+  		document.getElementById("amount").value = "";
+		}
+	</script>
+</body>
+</html>

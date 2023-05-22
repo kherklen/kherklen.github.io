@@ -1,0 +1,396 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face {
+	font-family: Roboto;
+	src: url("fonts/Roboto/Roboto-Regular.ttf");
+}
+@font-face {
+	font-family: RobotoBold;
+	src: url("fonts/Roboto/Roboto-Bold.ttf");
+}
+@font-face {
+	font-family: Playfair;
+	src: url("fonts/Playfair/static/PlayfairDisplay-Regular.ttf");
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	padding: 20px 10px 10px 90px;
+}
+nav ul {
+	margin: 5px;
+	padding: 5px;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	height: 100%;
+}
+
+nav li {
+	margin: 0 40px;
+}
+.exp-a {
+	color: #D0D0D0;
+}
+.exp-a:hover{
+	color: #000;
+}
+.disc-a {
+	color: #000;
+}
+.disc-a:hover{
+	color: #545454;
+}
+nav a {
+	color: #4b434b;
+	font-family: Playfair;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+nav li a:hover {
+	color: #71728f;
+	cursor: pointer;
+	font-size: 1.1em;
+}
+.about-section a {
+	font-family: playfair;
+	color: #000;
+	font-size: 18px;
+	text-align: right;
+	display: block;
+	margin: 50px 50px 50px 0;
+}
+.about-section a:hover {
+	color: #4E4E4E;
+	font-size: 1.1em;
+}
+.header-section {
+	background-image: url("imgs/man-1.jpg");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	height: 800px;
+	padding: 0;
+}
+.heading,.heading-exp {
+	font-family: Playfair;
+	font-size: 48px;
+	margin: 0 0 70px;
+}
+.subtitle,.subtitle-exp {
+	font-family: Playfair;
+	font-size: 24px;
+	margin: 0;
+}
+.text-1, .text-1-exp {
+	font-family: playfair;
+	font-size: 16px;
+	margin: 0;
+}
+
+.header-section a {
+	display: inline-block;
+	background-color: #fff;
+	color: #000;
+	padding: 20px 40px;
+	border-radius: 30px;
+	font-size: 18px;
+	text-decoration: none;
+	margin-top: 20px;
+}
+
+.about-section {
+	padding: 100px 50px 0;
+	background-color: #fff;
+	height: 900px;
+}
+
+.about-section h2 {
+	font-size: 32px;
+	margin: 100px 0 0 0;
+	padding: 0;
+	text-align: center;
+	font-family: Playfair;
+}
+.about-section p {
+	font-family: playfair;
+	font-size: 18px;
+	margin: 20px 40px 50px;
+	text-align: center;
+}
+.row {
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  margin: 0 40px; 
+}
+
+.column {
+  flex: 1;
+  margin: 10px; 
+  display: flex; 
+	position: relative;
+}
+
+img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+	position: relative;
+}
+.overlay {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  font-family: Playfair;
+  text-align: center;
+  transition: transform 0.3s ease; 
+  transform: translateY(100%); 
+}
+.column {
+	position: relative;
+}
+.column:hover .overlay {
+    opacity: 1; 
+	position: absolute;
+
+}
+.discover-section {
+	padding:0;
+	background-color: #1f1f27;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	height: 400px;
+}
+.text-2 {
+	text-align: center;
+	font-family: Playfair;
+	font-size: 18px;
+	margin: 10px 20px 0 180px;
+}
+.discover-section h2 {
+	font-size: 32px;
+	font-family: Playfair;
+	text-align: center;
+	padding: 0;
+}
+.discover-section a{
+	display: inline-block;
+	background-color: #111;
+	color: #fff;
+	padding: 20px 40px;
+	border-radius: 30px;
+	font-size: 18px;
+	text-decoration: underline;
+	margin: 40px 0 0 150px;
+}
+.exploreh-a {
+	display: inline-block;
+	color: #fff;
+	padding: 20px 40px;
+	border-radius: 30px;
+	font-size: 18px;
+	text-decoration: underline;
+	margin: 50px auto;
+}
+.discover-section a:hover {
+	background-color: #fff;
+	color: #000;
+	font-size: 1.1em;
+}
+
+.gallery-section {
+	padding: 0;
+	background-color: #fff;
+}
+.gallery-section p {
+	font-family: Playfair;
+	font-size: 18px;
+	margin: 30px 40px 0 40px;
+	text-align: center;
+}
+.gallery-section h2 {
+	font-family: Playfair;
+	font-size: 32px;
+	text-align: center;
+	margin: 80px 0 0 0;
+	padding: 0;
+}
+
+.gallery-grid {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 50px 40px 0;
+}
+
+.gallery-item {
+	width: 20%;
+	margin: 10px auto;
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+.gallery-item img {
+	width: 100%;
+	transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+	transform: scale(1.05);
+}
+.gallery-section a {
+	font-family: playfair;
+	color: #000;
+	font-size: 18px;
+	text-align: right;
+	display: block;
+	margin: 50px 150px 50px 0;
+}
+.gallery-section a:hover {
+	color: #4E4E4E;
+	font-size: 1.1em;
+}
+.title-2 {
+	font-family: Playfair;
+	font-size: 36px;
+	font-weight: 500;
+	margin: 50px 0 0 150px;
+}
+.left {
+	float: left;
+	width: 50%;
+}
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+iframe {
+	margin: 0 50px 0 20px;
+}
+.exploreh-section {
+	background-image: url("imgs/2.jpg");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	height: 800px;
+	padding: 0;
+}
+.discoverh-section {
+	background-image: url("imgs/gallery-1.jpg");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	min-height: 400px;
+	padding: 0;
+}
+.galleryh-section {
+	background-image: url("imgs/gallery-title.jpeg");
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #fff;
+	height: 800px;
+	padding: 0;
+}
+footer {
+	background-color: #111;
+	font-size: 15px;
+	font-family: Playfair;
+	color: #fff;
+	padding: 3px;
+	text-align: center;
+}
+@media screen and (max-width:1000px)
+{
+	body {
+	font-size: 0.5em;
+	}
+	.gallery-item{width: 100%}
+	.row 
+	{
+		flex-direction: column;
+		width: 100%;
+		margin: auto;
+	}
+	.heading,.head-2
+	{
+		margin: 40px auto;
+		display: block;
+	}
+	nav ul, nav li
+	{
+		list-style: none;
+		display: block;
+		margin: auto;
+	}
+	.about-section, .gallery-section, .discover-section
+	{
+		margin: 20px;
+		flex-direction: column;
+		height: auto;
+	}
+	.column{width: 100%;
+	}
+	.container, .left {
+		clear: both;
+		width: 100%;
+	}
+	.title-2, .text-2{
+		margin: 20px;
+	}
+	.discover-section a{
+		margin: auto;
+	}
+	iframe 
+	{
+		margin: 20px;
+		width: 80%;
+	}
+	p {
+		margin: auto;
+		padding: auto;
+	}
+}
